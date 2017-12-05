@@ -27,7 +27,6 @@ import selection_remove from "./remove";
 import selection_datum from "./datum";
 import selection_on from "./on";
 import selection_dispatch from "./dispatch";
-import {createIndex, selectRange} from "./select-index";
 
 export var root = [null];
 
@@ -71,9 +70,6 @@ Selection.prototype = selection.prototype = {
   datum: selection_datum,
   on: selection_on,
   dispatch: selection_dispatch,
-  createIndex: createIndex,
-  selectRange: selectRange
-
 };
 
 export default selection;

@@ -14,3 +14,4 @@ export {default as touch} from "./src/touch";
 export {default as touches} from "./src/touches";
 export {default as window} from "./src/window";
 export {event, customEvent} from "./src/selection/on";
+export {createIndex, selectRange} from "./src/select-index";

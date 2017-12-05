@@ -1,5 +1,7 @@
 //var quadtreelib = require("d3-quadtree");
 import * as qt from "d3-quadtree";
+import {Selection, root} from "./selection/index";
+
 
 // Create initial index object from scan of selection
 function createIndex(data, x_accessor, y_accessor) {
@@ -8,13 +10,12 @@ function createIndex(data, x_accessor, y_accessor) {
 
 // Use the index to select on x, y values
 // Will select a rectagular box with lower left corner = x_lower,y_lower and upper right corner = x_upper,y_upper
-// Null arguments will be treated as either 0 (for x_lower, y_lower) or max (for x_upper, y_upper)
 function selectRange(tree, x_lower, y_lower, x_upper, y_upper){
+    var nodelist = [];
     // This callback is for traversing the quadtree
     // node: node being visited
     // <x0, y0> lower bounds of node
     // <x1, y1> upper bounds of node
-    var nodelist = [];
     function visitCallback(node, x0, y0, x1, y1) {
          // Iterate through the list of nodes at this point.
          if (!node.length) {
@@ -35,7 +36,7 @@ function selectRange(tree, x_lower, y_lower, x_upper, y_upper){
 
     }
     tree.visit(visitCallback);
-    return nodelist;
+    return new Selection([nodelist], root);
 }
 
 export { createIndex, selectRange };
