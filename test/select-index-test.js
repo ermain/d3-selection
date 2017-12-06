@@ -3,12 +3,6 @@ var tape = require("tape"),
     d3 = require("../");
     qt = require("d3-quadtree");
 
-tape("d3.createIndex(…) returns a quadtree", function(test) {
-  var array = [[1, 2], [3, 4]];
-  test.ok(d3.createIndex(array) instanceof qt.quadtree);
-  test.end();
-});
-
 tape("d3.selectRange returns a d3.selection"), function(test) {
   var array = [[0, 0]];
   var tree = d3.createIndex(array);
